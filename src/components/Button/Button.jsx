@@ -8,7 +8,7 @@ function LoadMoreBtn({ onButtonClick, onRefresh }) {
         Load more
       </button>
       <button className={css.Button} type="button" onClick={onRefresh}>
-        Cleen
+       Сlear page
       </button>
     </>
   );
