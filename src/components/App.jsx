@@ -101,7 +101,6 @@ export class App extends Component {
            <div className={cssBtn.Button_container}>
           <Button onButtonClick={() => this.loadMore()} 
                   onRefresh={() => this.onRefresh()} />
-          
           </div>
         )}
       </div>
