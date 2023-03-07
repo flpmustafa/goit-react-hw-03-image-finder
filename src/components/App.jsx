@@ -75,7 +75,7 @@ export class App extends Component {
       loading: false,
       largeImageURL: '',
       tags: '', })
-    
+
   }  
 
   render() {
