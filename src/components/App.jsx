@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { API_URL, API_KEY, API_PARAMS } from '../utils/api';
 import Searchbar from './Searchbar/Searchbar';
-import Button from './Button/Button';
+import ClearBtn from './Button/ClearButton';
+import LoadMoreBtn from './Button/LoadMoreBtn';
 import ImageGallery from './ImageGallery/ImageGallery';
 import ImageGalleryItem from './ImageGalleryItem/ImageGalleryItem';
 import Modal from './Modal/Modal';
 import SpinnerLoader from './Loader/Loader';
 import css from '../components/App.module.css';
-import cssBtn from './Button/Button.module.css';
+import cssBtn from './Button/LoadMoreBtn.module.css';
 
 export class App extends Component {
   state = {
@@ -62,8 +63,8 @@ export class App extends Component {
     }
   };
 
-  loadMore = () => {
-    this.getValue(this.state);
+  loadMore = () => { 
+      this.getValue(this.state) 
   };
 
   onRefresh = () => {
@@ -80,6 +81,7 @@ export class App extends Component {
 
   render() {
     const { hits, showModal, loading, largeImageURL, tags } = this.state;
+    console.dir(hits.length);
 
     return (
       <div className={css.App}>
@@ -96,13 +98,12 @@ export class App extends Component {
         {showModal && (
           <Modal onClose={this.toggleModal} url={largeImageURL} alt={tags} />
         )}
-
-        {hits.length > 0 && (
-           <div className={cssBtn.Button_container}>
-          <Button onButtonClick={() => this.loadMore()} 
-                  onRefresh={() => this.onRefresh()} />
-          </div>
-        )}
+          <div className={cssBtn.Button_container}>
+          {hits.length === 12 && !loading && (<LoadMoreBtn onButtonClick={() => this.loadMore()} /> )}
+          {hits.length > 0 && (<ClearBtn onRefresh={() => this.onRefresh()}/>)}
+          </div> 
+           
+               
       </div>
     );
   }

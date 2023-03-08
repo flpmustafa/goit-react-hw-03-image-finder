@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import css from '../Modal/Modal.module.css';
-import cssBtn from '../Button/Button.module.css';
+import cssBtn from '../Button/LoadMoreBtn.module.css';
 
 class Modal extends Component {
   componentDidMount() {
